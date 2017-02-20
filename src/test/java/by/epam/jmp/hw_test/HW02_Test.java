@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import static by.epam.jmp.homework.HomeWork_02.calculateLength;
 import static by.epam.jmp.homework.HomeWork_02.calculateSquare;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -22,12 +23,12 @@ public class HW02_Test {
     }
 
     @Test
-    public void testTrue—alculateLength() {
-        assertTrue( Math.PI * Math.pow(2, 2)== calculateLength(2));
+    public void testTrueCalculateLength() {
+        assertTrue(2 * Math.PI * 2== calculateLength(2));
     }
 
     @Test
-    public void testFalse—alculateLength() {
-        assertTrue(Math.PI * Math.pow(3, 2) == calculateSquare(2));
+    public void testFalseCalculateLength() {
+        assertFalse(2 * Math.PI * 3 == calculateLength(2));
     }
 }
