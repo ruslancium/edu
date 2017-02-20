@@ -1,4 +1,4 @@
-package by.epam.jmp.homework;
+package by.epam.jmp.homework.hw_01;
 
 import java.io.*;
 

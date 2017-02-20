@@ -2,8 +2,8 @@ package by.epam.jmp.hw_test;
 
 import org.junit.Test;
 
-import static by.epam.jmp.homework.HomeWork_02.calculateLength;
-import static by.epam.jmp.homework.HomeWork_02.calculateSquare;
+import static by.epam.jmp.homework.hw_02.HomeWork_02.calculateLength;
+import static by.epam.jmp.homework.hw_02.HomeWork_02.calculateSquare;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
