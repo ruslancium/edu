@@ -1,5 +1,7 @@
 package name.ruslan.hw01.io;
 
+import name.ruslan.hw01.main.CustomException;
+
 import java.util.Scanner;
 
 /**
