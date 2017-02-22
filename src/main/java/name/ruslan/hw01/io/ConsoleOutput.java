@@ -6,7 +6,10 @@ package name.ruslan.hw01.io;
  */
 public class ConsoleOutput {
 
-    public static void display(String text) {
-        System.out.println(text);
+    public static void display(boolean flag, String text) {
+        if (flag)
+            System.out.println(text);
+        else
+            System.out.println("error: " + text);
     }
 }
