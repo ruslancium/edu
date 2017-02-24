@@ -1,6 +1,6 @@
-package name.ruslan.hw02.io;
+package name.ruslan.hw01.io;
 
-import name.ruslan.hw02.main.CustomException;
+import name.ruslan.hw01.exception.CustomException;
 
 import java.io.BufferedReader;
 import java.io.File;

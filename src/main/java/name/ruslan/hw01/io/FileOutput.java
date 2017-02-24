@@ -1,4 +1,4 @@
-package name.ruslan.hw02.io;
+package name.ruslan.hw01.io;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -28,9 +28,7 @@ public class FileOutput {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
             }
         }
     }
 }
-

@@ -1,4 +1,4 @@
-package name.ruslan.hw01.main;
+package name.ruslan.hw01.exception;
 
 /**
  * Created by Ruslan_Arifullin on 2/21/2017.

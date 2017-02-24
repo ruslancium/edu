@@ -1,6 +1,6 @@
 package name.ruslan.hw01.io;
 
-import name.ruslan.hw01.main.CustomException;
+import name.ruslan.hw01.exception.CustomException;
 
 import java.util.Scanner;
 
@@ -24,5 +24,21 @@ public class ConsoleInput {
         }
 
         return x;
+    }
+
+    public static double getDouble() throws CustomException {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("PLease input a double > ");
+
+        double val = 0.0;
+
+        if (sc.hasNextDouble()) {
+            val = sc.nextDouble();
+        } else {
+            sc.next();
+            throw new CustomException("The value should be double. Please try again");
+        }
+
+        return val;
     }
 }
