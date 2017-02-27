@@ -16,9 +16,9 @@ import java.util.List;
  */
 public class FileInput {
 
-    public List<Board> readData(String filePath) throws CustomException {
+    public List<String> getStringsFromFile(String filePath) throws CustomException {
         File file = new File(filePath);
-        List<Board> boards = new ArrayList<Board>();
+        List<String> strings = new ArrayList<>();
         String line = null;
         BufferedReader reader = null;
 
@@ -31,27 +31,7 @@ public class FileInput {
             line = reader.readLine();
 
             while (line != null) {
-                String[] params = line.split("[ \\t]+");
-
-                Manufacturer manufacturer = new Manufacturer().setTypeCode(Integer.parseInt(params[0]));
-                String name = params[1];
-                int consumption = Integer.parseInt(params[2]);
-                int capacity = Integer.parseInt(params[3]);
-                int carriage = Integer.parseInt(params[4]);
-                int speed = Integer.parseInt(params[5]);
-                double range = Double.parseDouble(params[6]);
-
-                Board board = new Board();
-                board.setManufacturer(manufacturer);
-                board.setName(name);
-                board.setConsumption(consumption);
-                board.setCapacity(capacity);
-                board.setCarriage(carriage);
-                board.setSpeed(speed);
-                board.setRange(range);
-
-                boards.add(board);
-
+                strings.add(line);
                 line = reader.readLine();
             }
         } catch (IOException e) {
@@ -64,6 +44,36 @@ public class FileInput {
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
+        }
+
+        return strings;
+    }
+
+    public List<Board> getData(List<String> strings) {
+
+        List<Board> boards = new ArrayList<>();
+
+        for (String string : strings) {
+            String[] params = string.split("[ \\t]+");
+
+            Manufacturer manufacturer = Manufacturer.getByCode(Integer.parseInt(params[0]));
+            String name = params[1];
+            int consumption = Integer.parseInt(params[2]);
+            int capacity = Integer.parseInt(params[3]);
+            int carriage = Integer.parseInt(params[4]);
+            int speed = Integer.parseInt(params[5]);
+            double range = Double.parseDouble(params[6]);
+
+            Board board = new Board();
+            board.setManufacturer(manufacturer);
+            board.setName(name);
+            board.setConsumption(consumption);
+            board.setCapacity(capacity);
+            board.setCarriage(carriage);
+            board.setSpeed(speed);
+            board.setRange(range);
+
+            boards.add(board);
         }
 
         return boards;

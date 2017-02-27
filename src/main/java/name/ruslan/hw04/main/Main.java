@@ -1,16 +1,11 @@
 package name.ruslan.hw04.main;
 
-import name.ruslan.hw04.calculation.Search;
-import name.ruslan.hw04.calculation.Sort;
-import name.ruslan.hw04.calculation.Sum;
 import name.ruslan.hw04.exception.CustomException;
-import name.ruslan.hw04.io.ConsoleInput;
 import name.ruslan.hw04.io.ConsoleOutput;
 import name.ruslan.hw04.io.FileInput;
 import name.ruslan.hw04.plane.Board;
 import name.ruslan.hw04.plane.Fleet;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,13 +14,16 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) throws name.ruslan.hw01.exception.CustomException {
-        String filePath = "../data/planes.txt";
+        String filePath = "./data/planes.txt";
         Fleet fleet = new Fleet();
 
         FileInput fileInput = new FileInput();
         try {
             ConsoleOutput.display(true, "Load data from a file>>");
-            fleet.setBoards(fileInput.readData(filePath));
+            List<String> stringsFromFile = fileInput.getStringsFromFile(filePath);
+            List<Board> boards = fileInput.getData(stringsFromFile);
+
+            fleet.setBoards(fileInput.getData(boards));
 
             ConsoleOutput.display(true, "Calculation stage>>");
             Sum sum = new Sum();
@@ -35,7 +33,6 @@ public class Main {
 
             stringTotal = String.format("Total carriage: %d", sum.totalCarriage(fleet.getBoards()));
             ConsoleOutput.display(true, stringTotal);
-
 
             ConsoleOutput.display(true, "Sorting stage>>");
 
@@ -48,10 +45,10 @@ public class Main {
             fleet.printList();
 
             ConsoleOutput.display(true, "Search stage>>");
-            double minConsumption = ConsoleInput.getDouble();
-            double maxConsumption = ConsoleInput.getDouble();
-            Search search = new Search(minConsumption, maxConsumption);
-            fleet.setBoards(search.find(fleet));
+            //double minConsumption = ConsoleInput.getDouble();
+            //double maxConsumption = ConsoleInput.getDouble();
+            //Search search = new Search(minConsumption, maxConsumption);
+            //fleet.setBoards(search.find(fleet));
         } catch (CustomException e) {
             e.printStackTrace();
         }
