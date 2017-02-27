@@ -1,5 +1,7 @@
 package name.ruslan.hw04.plane;
 
+import name.ruslan.hw04.io.ConsoleOutput;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,4 +20,9 @@ public class Fleet {
         this.boards = boards;
     }
 
+    public void printList() {
+        for (Board board: boards) {
+            ConsoleOutput.display(true, board.toString());
+        }
+    }
 }

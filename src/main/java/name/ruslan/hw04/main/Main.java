@@ -1,8 +1,10 @@
 package name.ruslan.hw04.main;
 
+import name.ruslan.hw04.calculation.Search;
 import name.ruslan.hw04.calculation.Sort;
 import name.ruslan.hw04.calculation.Sum;
 import name.ruslan.hw04.exception.CustomException;
+import name.ruslan.hw04.io.ConsoleInput;
 import name.ruslan.hw04.io.ConsoleOutput;
 import name.ruslan.hw04.io.FileInput;
 import name.ruslan.hw04.plane.Board;
@@ -16,7 +18,7 @@ import java.util.List;
  */
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws name.ruslan.hw01.exception.CustomException {
         String filePath = "";
         Fleet fleet = new Fleet();
 
@@ -36,19 +38,20 @@ public class Main {
 
 
             ConsoleOutput.display(true, "Sorting stage>>");
-            List<Board> boards = new ArrayList<>();
+
             Sort sort = new Sort();
-            sort.compareHumanCapacity(boards);
-            sort.printList(boards);
+            sort.compareHumanCapacity(fleet.getBoards());
+            fleet.printList();
 
-            sort.compareRange(boards);
-            sort.printList(boards);
+            sort.compareRange(fleet.getBoards());
+            fleet.setBoards(fleet.getBoards());
+            fleet.printList();
 
-            ConsoleOutput.display(true, "Sorting stage>>");
-
-
-
-
+            ConsoleOutput.display(true, "Search stage>>");
+            double minConsumption = ConsoleInput.getDouble();
+            double maxConsumption = ConsoleInput.getDouble();
+            Search search = new Search(minConsumption, maxConsumption);
+            fleet.setBoards(search.find(fleet));
         } catch (CustomException e) {
             e.printStackTrace();
         }

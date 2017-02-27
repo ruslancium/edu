@@ -25,11 +25,4 @@ public class Sort {
             return cmp;
         });
     }
-
-    public void printList(List<Board> boards) {
-        for (Board board: boards) {
-            ConsoleOutput.display(true, board.toString());
-        }
-    }
-
 }
