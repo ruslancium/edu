@@ -19,7 +19,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) throws name.ruslan.hw01.exception.CustomException {
-        String filePath = "";
+        String filePath = "../data/planes.txt";
         Fleet fleet = new Fleet();
 
         FileInput fileInput = new FileInput();
@@ -59,3 +59,4 @@ public class Main {
 
     }
 }
+
