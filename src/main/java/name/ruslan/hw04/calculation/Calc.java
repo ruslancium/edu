@@ -1,7 +1,8 @@
 package name.ruslan.hw04.calculation;
 
+import name.ruslan.hw04.plane.Airliner;
 import name.ruslan.hw04.plane.Board;
-import name.ruslan.hw04.plane.Fleet;
+import name.ruslan.hw04.plane.Cargo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ public class Calc {
     }
 
     //сортировка бортов по вместимости
-    public void compareHumanCapacity(List<Board> boards) {
+    public void compareHumanCapacity(List<Airliner> boards) {
         boards.sort((board1, board2) -> {
             int cmp = Integer.compare(board1.getCapacity(), board2.getCapacity());
 
@@ -37,10 +38,10 @@ public class Calc {
 
 
     //подсчет общей вместимости
-    public int totalCapacity(List<Board> boards) {
+    public int totalCapacity(List<Airliner> boards) {
         int total = 0;
 
-        for (Board board : boards) {
+        for (Airliner board : boards) {
             total += board.getCapacity();
         }
 
@@ -48,10 +49,10 @@ public class Calc {
     }
 
     //подсчет общей грузоподъемности
-    public int totalCarriage(List<Board> boards) {
+    public int totalCarriage(List<Cargo> boards) {
         int total = 0;
 
-        for (Board board : boards) {
+        for (Cargo board : boards) {
             total += board.getCarriage();
         }
 

@@ -24,6 +24,11 @@ public class Airliner extends Board {
         this.economSeats = economSeats;
     }
 
+    public int getCapacity() {
+        return businessSeats + economSeats;
+    }
+
+
     @Override
     public String toString() {
         String result = super.toString();

@@ -6,12 +6,10 @@ package name.ruslan.hw04.plane;
 public class Cargo extends Board {
     private int carriage;
 
-    @Override
     public int getCarriage() {
         return carriage;
     }
 
-    @Override
     public void setCarriage(int carriage) {
         this.carriage = carriage;
     }
@@ -22,7 +20,7 @@ public class Cargo extends Board {
 
         result += "\n Unique features{" +
                 "carriage =" + carriage + "\n" +
-                ":";
+                "}";
 
         return result;
     }

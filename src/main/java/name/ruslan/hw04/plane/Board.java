@@ -8,7 +8,6 @@ public abstract class Board {
     private Manufacturer manufacturer;  //manufacturer name
     private String name;      //name of board
     private int consumption;
-
     private int speed;
     private double range;      //range of flight
 
@@ -51,6 +50,7 @@ public abstract class Board {
     public void setRange(double range) {
         this.range = range;
     }
+
 
     @Override
     public String toString() {
