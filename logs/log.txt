@@ -1,3 +1,9 @@
-2017-03-01 13:58:05 [main] ERROR Main - Wrong string is detected
- [Ljava.lang.String;@60285225
-2017-03-01 13:58:05 [main] ERROR Main - For input string: "s"
+2017-03-01 14:02:38 [main] ERROR Main - Wrong string is detected
+ [3, "ffads", 0, s, d, e, w, 4]
+2017-03-01 14:02:38 [main] ERROR Main - For input string: "s"
+2017-03-01 14:03:37 [main] ERROR Main - Wrong string is detected
+ [3, "ffads", 0, s, d, e, w, 4]
+2017-03-01 14:03:37 [main] ERROR Main - For input string: "s"
+2017-03-01 14:05:44 [main] ERROR Main - Wrong string is detected
+ [3, "ffads", 0, s, d, e, w, 4]
+2017-03-01 14:05:44 [main] ERROR Main - For input string: "s"

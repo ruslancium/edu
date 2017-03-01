@@ -10,6 +10,8 @@ import name.ruslan.hw04.plane.Airliner;
 import name.ruslan.hw04.plane.Board;
 import name.ruslan.hw04.plane.Cargo;
 import name.ruslan.hw04.plane.Fleet;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +21,9 @@ import java.util.List;
  */
 public class Main {
 
-    public static void main(String[] args) throws name.ruslan.hw01.exception.CustomException {
+    public final static Logger LOGGER = LogManager.getLogger("Main");
+
+    public static void main(String[] args) throws CustomException, name.ruslan.hw01.exception.CustomException {
 
         String filePath = "data/planes.txt";
         Fleet fleet = new Fleet();
@@ -28,35 +32,39 @@ public class Main {
         try {
             ConsoleOutput.display(true, "Stage of loading data from file...");
             List<String> stringsFromFile = fileInput.getStringsFromFile(filePath);
-            List<Airliner> airliners = InputProcessing.getAirlinerData(stringsFromFile);
-            List<Cargo> cargos =  InputProcessing.getCargoData(stringsFromFile);
-
-            List<Board> boards = new ArrayList<>();
-            boards.addAll(airliners);
-            boards.addAll(cargos);
+            List<Board> boards = InputProcessing.getBoards(stringsFromFile);
 
             fleet.setBoards(boards);
 
             ConsoleOutput.display(true, "Calculation stage>>");
             Calc calc = new Calc();
 
+            List<Airliner> airliners = new ArrayList<>();
+            List<Cargo> cargos = new ArrayList<>();
+            for (Board board : boards) {
+                if (board instanceof Airliner) {
+                    airliners.add((Airliner)board);
+                }
+                else
+                    cargos.add((Cargo)board);
+            }
             String stringTotal = String.format("Total capacity: %d", calc.totalCapacity(airliners));
             ConsoleOutput.display(true, stringTotal);
 
             stringTotal = String.format("Total carriage: %d", calc.totalCarriage(cargos));
             ConsoleOutput.display(true, stringTotal);
 
-            ConsoleOutput.display(true, "Sorting stage>>");
-
+            ConsoleOutput.display(true, "\n\nSorting stage>>");
 
             calc.compareHumanCapacity(airliners);
+            fleet.setBoards(airliners);
             fleet.printList();
 
+            fleet.setBoards(boards);
             calc.compareRange(fleet.getBoards());
-            fleet.setBoards(fleet.getBoards());
             fleet.printList();
 
-            ConsoleOutput.display(true, "Search stage>>");
+            ConsoleOutput.display(true, "\n\nSearch stage>>");
             ConsoleOutput.display(true, "Please enter minimum value of fuel consumption");
             int minConsumption = ConsoleInput.getInteger();
 
@@ -65,8 +73,7 @@ public class Main {
             fleet.setBoards(calc.findBoardConsuption(fleet.getBoards(), minConsumption, maxConsumption));
             fleet.printList();
         } catch (CustomException e) {
-            e.printStackTrace();
+            ConsoleOutput.display(false, e.getMessage());
         }
     }
 }
-
