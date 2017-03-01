@@ -10,3 +10,6 @@
 2017-03-01 15:43:17 [main] ERROR Main - Wrong string is detected
  [3, "ffads", 0, s, d, e, w, 4]
 2017-03-01 15:43:17 [main] ERROR Main - For input string: "s"
+2017-03-01 15:45:07 [main] ERROR Main - Wrong string is detected
+ [3, "ffads", 0, s, d, e, w, 4]
+2017-03-01 15:45:07 [main] ERROR Main - For input string: "s"

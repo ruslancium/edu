@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/src/main/java/by/epam/jmp/homework/hw_01/HomeWork_01.java" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/src/main/java/by/epam/jmp/homework/hw_02/HomeWork_02.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/java/by/epam/jmp/less_class0103/HamletInternationalization.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/by/epam/jmp/less_class0103/Test.java" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/src/main/java/name/ruslan/hw04/calculation/Calc.java" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/src/main/java/name/ruslan/hw04/io/InputProcessing.java" charset="windows-1251" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
