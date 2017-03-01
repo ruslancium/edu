@@ -20,7 +20,7 @@ public final class InputProcessing {
         List<Board> boards = new ArrayList<>();
 
         for (String string : strings) {
-            String[] params = string.split("[ \\s]+");
+            String[] params = string.split("[\\s]+");
             Board board = null;
 
             //?????????? ?????? Integer.parseInt(data[2]) ? ???????
