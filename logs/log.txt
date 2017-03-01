@@ -1,15 +1,3 @@
-2017-03-01 14:02:38 [main] ERROR Main - Wrong string is detected
+2017-03-01 17:37:18 [main] ERROR Input_Processing - Wrong string is detected
  [3, "ffads", 0, s, d, e, w, 4]
-2017-03-01 14:02:38 [main] ERROR Main - For input string: "s"
-2017-03-01 14:03:37 [main] ERROR Main - Wrong string is detected
- [3, "ffads", 0, s, d, e, w, 4]
-2017-03-01 14:03:37 [main] ERROR Main - For input string: "s"
-2017-03-01 14:05:44 [main] ERROR Main - Wrong string is detected
- [3, "ffads", 0, s, d, e, w, 4]
-2017-03-01 14:05:44 [main] ERROR Main - For input string: "s"
-2017-03-01 15:43:17 [main] ERROR Main - Wrong string is detected
- [3, "ffads", 0, s, d, e, w, 4]
-2017-03-01 15:43:17 [main] ERROR Main - For input string: "s"
-2017-03-01 15:45:07 [main] ERROR Main - Wrong string is detected
- [3, "ffads", 0, s, d, e, w, 4]
-2017-03-01 15:45:07 [main] ERROR Main - For input string: "s"
+2017-03-01 17:37:19 [main] ERROR Input_Processing - For input string: "s"

@@ -6,6 +6,8 @@ import name.ruslan.hw04.plane.Board;
 import name.ruslan.hw04.plane.Cargo;
 import name.ruslan.hw04.plane.Manufacturer;
 import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,6 +17,8 @@ import java.util.List;
  * Created by Ruslan_Arifullin on 2/28/2017.
  */
 public final class InputProcessing {
+
+    public final static Logger LOGGER = LogManager.getLogger("Input_Processing");
 
     public static List<Board> getBoards(List<String> strings) {
         List<Board> boards = new ArrayList<>();
@@ -29,8 +33,8 @@ public final class InputProcessing {
             try {
                 typeOfBoard = Integer.parseInt(params[2]);
             } catch (NumberFormatException e) {
-                Main.LOGGER.log(Level.ERROR, "Wrong string is detected\n " + string);
-                Main.LOGGER.log(Level.ERROR, e.getMessage());
+                LOGGER.log(Level.ERROR, "Wrong string is detected\n " + string);
+                LOGGER.log(Level.ERROR, e.getMessage());
                 continue;
             }
 
@@ -39,7 +43,7 @@ public final class InputProcessing {
             } else if (params.length == 7 && typeOfBoard == 1) { //cargo
                 board = getCargo(params);
             } else
-                Main.LOGGER.log(Level.INFO, "Wrong string is found:/n" + string);
+                LOGGER.log(Level.INFO, "Wrong string is found:/n" + string);
 
             if (board != null)
                 boards.add(board);
@@ -69,8 +73,8 @@ public final class InputProcessing {
             businessSeats = Integer.parseInt(data[6]);//?????????? ???? ? ??????-??????
             economSeats = Integer.parseInt(data[7]);  //?????????? ???? ? ??????-??????
         } catch (NumberFormatException e) {
-            Main.LOGGER.log(Level.ERROR, "Wrong string is detected\n " + Arrays.toString(data));
-            Main.LOGGER.log(Level.ERROR, e.getMessage());
+            LOGGER.log(Level.ERROR, "Wrong string is detected\n " + Arrays.toString(data));
+            LOGGER.log(Level.ERROR, e.getMessage());
             return null;
         }
 
@@ -103,8 +107,8 @@ public final class InputProcessing {
             range = Double.parseDouble(data[5]);   //????????? ??????
             carriage = Integer.parseInt(data[6]);//?????????? ???? ? ??????-??????
         } catch (NumberFormatException e) {
-            Main.LOGGER.log(Level.ERROR, "Wrong string is detected\n " + Arrays.toString(data));
-            Main.LOGGER.log(Level.ERROR, e.getMessage());
+            LOGGER.log(Level.ERROR, "Wrong string is detected\n " + Arrays.toString(data));
+            LOGGER.log(Level.ERROR, e.getMessage());
             return null;
         }
 
@@ -117,6 +121,4 @@ public final class InputProcessing {
 
         return board;
     }
-
-
 }
