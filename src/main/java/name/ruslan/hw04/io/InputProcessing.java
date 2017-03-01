@@ -1,10 +1,14 @@
 package name.ruslan.hw04.io;
 
+import name.ruslan.hw04.main.Main;
 import name.ruslan.hw04.plane.Airliner;
+import name.ruslan.hw04.plane.Board;
 import name.ruslan.hw04.plane.Cargo;
 import name.ruslan.hw04.plane.Manufacturer;
+import org.apache.logging.log4j.Level;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -12,92 +16,107 @@ import java.util.List;
  */
 public final class InputProcessing {
 
-    private static boolean isAirliner(int type) {
-        return type == 0; //0 - airliner, 1 - cargo
-    }
-
-    private static boolean isCargo(int type) {
-        return type == 1; //0 - airliner, 1 - cargo
-    }
-
-    public static List<Airliner> getAirlinerData(List<String> strings) {
-
-        List<Airliner> airliners = new ArrayList<>();
+    public static List<Board> getBoards(List<String> strings) {
+        List<Board> boards = new ArrayList<>();
 
         for (String string : strings) {
             String[] params = string.split("[ \\t]+");
+            Board board = null;
 
-            if (isCorrectData(params, 8)) { //парсим правильную строку?
-                Manufacturer manufacturer = Manufacturer.getByCode(Integer.parseInt(params[0])); //manufacturer
-                String name = params[1]; //name of the board, IL-86, A-300, etc
+            //подключить строку Integer.parseInt(data[2]) в условие
+            int typeOfBoard = 0; //0 - airliner; 1 - cargo
 
-                int typeOfBoard = Integer.parseInt(params[2]); //0 - airliner, 1 - cargo
-                if (isAirliner(typeOfBoard)) {
-                    int consumption = Integer.parseInt(params[3]);  //потребление топлива
-                    int speed = Integer.parseInt(params[4]);        //скорость
-                    double range = Double.parseDouble(params[5]);   //дальность полета
-                    int businessSeats = Integer.parseInt(params[6]);//количество мест в бизнес-классе
-                    int economSeats = Integer.parseInt(params[7]);  //количество мест в эконом-классе
-
-                    Airliner board = new Airliner();
-                    board.setManufacturer(manufacturer);
-                    board.setName(name);
-                    board.setConsumption(consumption);
-                    board.setSpeed(speed);
-                    board.setRange(range);
-                    board.setBusinessSeats(businessSeats);
-                    board.setEconomSeats(economSeats);
-
-                    airliners.add(board);
-                }
-            }
-            else {
-                //херачим в лог, что строка не та
+            try {
+                typeOfBoard = Integer.parseInt(params[2]);
+            } catch (NumberFormatException e) {
+                Main.LOGGER.log(Level.ERROR, "Wrong string is detected\n " + string);
+                Main.LOGGER.log(Level.ERROR, e.getMessage());
+                continue;
             }
 
+            if (params.length == 8 && typeOfBoard == 0) { //airliner
+                board = getAirliner(params);
+            } else if (params.length == 7 && typeOfBoard == 1) { //cargo
+                board = getCargo(params);
+            } else
+                Main.LOGGER.log(Level.INFO, "Wrong string is found:/n" + string);
+
+            if (board != null)
+                boards.add(board);
         }
 
-        return airliners;
+        return boards;
     }
 
-    public static List<Cargo> getCargoData(List<String> strings) {
-        List<Cargo> cargos = new ArrayList<>();
+    private static Board getAirliner(String[] data) {
+        Airliner board = new Airliner();
 
-        for (String string : strings) {
-            String[] params = string.split("[ \\t]+");
-            if (isCorrectData(params, 6)) { //парсим правильную строку?
+        Manufacturer manufacturer = null;
+        String name = "";
+        int consumption = 0;  //потребление топлива
+        int speed = 0;        //скорость
+        double range = 0.0;   //дальность полета
+        int businessSeats = 0;//количество мест в бизнес-классе
+        int economSeats = 0;  //количество мест в эконом-классе
 
-                Manufacturer manufacturer = Manufacturer.getByCode(Integer.parseInt(params[0])); //manufacturer
-                String name = params[1]; //name of the board, IL-86, A-300, etc
+        try {
+            manufacturer = Manufacturer.getByCode(Integer.parseInt(data[0])); //manufacturer
+            name = data[1]; //name of the board, IL-86, A-300, etc
 
-                int typeOfBoard = Integer.parseInt(params[2]); //0 - airliner, 1 - cargo
-                if (isCargo(typeOfBoard)) {
-                    int consumption = Integer.parseInt(params[3]);  //потребление топлива
-                    int speed = Integer.parseInt(params[4]);        //скорость
-                    double range = Double.parseDouble(params[5]);   //дальность полета
-                    int carriage = Integer.parseInt(params[6]);//количество мест в бизнес-классе
-
-                    Cargo board = new Cargo();
-                    board.setManufacturer(manufacturer);
-                    board.setName(name);
-                    board.setConsumption(consumption);
-                    board.setSpeed(speed);
-                    board.setRange(range);
-                    board.setCarriage(carriage);
-
-                    cargos.add(board);
-                }
-            }
-            else {
-                //херачим в лог, что строка не та
-            }
-
+            consumption = Integer.parseInt(data[3]);  //потребление топлива
+            speed = Integer.parseInt(data[4]);        //скорость
+            range = Double.parseDouble(data[5]);   //дальность полета
+            businessSeats = Integer.parseInt(data[6]);//количество мест в бизнес-классе
+            economSeats = Integer.parseInt(data[7]);  //количество мест в эконом-классе
+        } catch (NumberFormatException e) {
+            Main.LOGGER.log(Level.ERROR, "Wrong string is detected\n " + Arrays.toString(data));
+            Main.LOGGER.log(Level.ERROR, e.getMessage());
+            return null;
         }
 
-        return cargos;
+        board.setManufacturer(manufacturer);
+        board.setName(name);
+        board.setConsumption(consumption);
+        board.setSpeed(speed);
+        board.setRange(range);
+        board.setBusinessSeats(businessSeats);
+        board.setEconomSeats(economSeats);
+
+        return board;
     }
 
-    private static boolean isCorrectData(String[] params, int requiredQunatity) {
-        return params.length == requiredQunatity;
+    private static Board getCargo(String[] data) {
+        Cargo board = new Cargo();
+
+        Manufacturer manufacturer = null;
+        String name = "";
+        int consumption = 0;  //потребление топлива
+        int speed = 0;        //скорость
+        double range = 0.0;   //дальность полета
+        int carriage = 0;
+
+        try {
+            manufacturer = Manufacturer.getByCode(Integer.parseInt(data[0])); //manufacturer
+            name = data[1]; //name of the board, IL-86, A-300, etc
+            consumption = Integer.parseInt(data[3]);  //потребление топлива
+            speed = Integer.parseInt(data[4]);        //скорость
+            range = Double.parseDouble(data[5]);   //дальность полета
+            carriage = Integer.parseInt(data[6]);//количество мест в бизнес-классе
+        } catch (NumberFormatException e) {
+            Main.LOGGER.log(Level.ERROR, "Wrong string is detected\n " + Arrays.toString(data));
+            Main.LOGGER.log(Level.ERROR, e.getMessage());
+            return null;
+        }
+
+        board.setManufacturer(manufacturer);
+        board.setName(name);
+        board.setConsumption(consumption);
+        board.setSpeed(speed);
+        board.setRange(range);
+        board.setCarriage(carriage);
+
+        return board;
     }
+
+
 }

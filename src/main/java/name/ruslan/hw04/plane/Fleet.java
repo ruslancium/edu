@@ -10,13 +10,13 @@ import java.util.List;
  */
 public class Fleet {
 
-    private List<Board> boards = new ArrayList<>();
+    private List<? extends Board> boards = new ArrayList<>();
 
-    public List<Board> getBoards() {
+    public List<? extends Board> getBoards() {
         return boards;
     }
 
-    public void setBoards(List<Board> boards) {
+    public void setBoards(List<? extends Board> boards) {
         this.boards = boards;
     }
 

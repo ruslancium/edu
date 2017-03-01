@@ -1,5 +1,8 @@
 package name.ruslan.hw04.io;
 
+import name.ruslan.hw04.main.Main;
+import org.apache.logging.log4j.Level;
+
 /**
  * Created by Ruslan_Arifullin on 2/21/2017.
  * Класс для вывода символов на консоль
@@ -10,6 +13,6 @@ public class ConsoleOutput {
         if (flag)
             System.out.println(text);
         else
-            System.out.println("error: " + text);
+            Main.LOGGER.log(Level.ERROR, text);
     }
 }

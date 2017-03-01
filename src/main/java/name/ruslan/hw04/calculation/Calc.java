@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class Calc {
 
     //поиск судна по потреблению топлива
-    public List<Board> findBoardConsuption(List<Board> boards, int minConsumption, int maxConsumption) {
+    public List<? extends Board> findBoardConsuption(List<? extends Board> boards, int minConsumption, int maxConsumption) {
         return boards.stream().filter(board -> board.getConsumption() >= minConsumption && board.getConsumption() <= maxConsumption).collect(Collectors.toCollection(ArrayList::new));
     }
 
@@ -28,7 +28,7 @@ public class Calc {
     }
 
     //сортировка бортов по дальности полета
-    public void compareRange(List<Board> boards) {
+    public void compareRange(List<? extends Board> boards) {
         boards.sort((board1, board2) -> {
             int cmp = Double.compare(board1.getRange(), board2.getRange());
 
