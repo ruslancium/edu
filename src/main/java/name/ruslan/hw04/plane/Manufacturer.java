@@ -1,6 +1,5 @@
 package name.ruslan.hw04.plane;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,8 +27,7 @@ public enum Manufacturer {
         return map.get(code);
     }
 
-    @Override
-    public List<String> toString() {
+    public List<String> getDescription() {
         List<String> result = map.entrySet().stream().map(man -> String.format("%s : manufacturers are presented like %d", man.getValue().name(), man.getKey())).collect(Collectors.toList());
 
         return result;

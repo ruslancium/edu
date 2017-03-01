@@ -1,7 +1,6 @@
 package name.ruslan.hw04.io;
 
 import name.ruslan.hw04.plane.Airliner;
-import name.ruslan.hw04.plane.Board;
 import name.ruslan.hw04.plane.Cargo;
 import name.ruslan.hw04.plane.Manufacturer;
 
@@ -23,12 +22,12 @@ public final class InputProcessing {
 
     public static List<Airliner> getAirlinerData(List<String> strings) {
 
-        List<Board> airliners = new ArrayList<>();
+        List<Airliner> airliners = new ArrayList<>();
 
         for (String string : strings) {
             String[] params = string.split("[ \\t]+");
 
-            if (isCorrectData(params, 7)) { //парсим правильную строку?
+            if (isCorrectData(params, 8)) { //парсим правильную строку?
                 Manufacturer manufacturer = Manufacturer.getByCode(Integer.parseInt(params[0])); //manufacturer
                 String name = params[1]; //name of the board, IL-86, A-300, etc
 

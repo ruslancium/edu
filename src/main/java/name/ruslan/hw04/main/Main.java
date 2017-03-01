@@ -2,6 +2,7 @@ package name.ruslan.hw04.main;
 
 import name.ruslan.hw04.calculation.Calc;
 import name.ruslan.hw04.exception.CustomException;
+import name.ruslan.hw04.io.ConsoleInput;
 import name.ruslan.hw04.io.ConsoleOutput;
 import name.ruslan.hw04.io.FileInput;
 import name.ruslan.hw04.io.InputProcessing;
@@ -19,12 +20,13 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) throws name.ruslan.hw01.exception.CustomException {
-        String filePath = "./data/planes.txt";
+
+        String filePath = "data/planes.txt";
         Fleet fleet = new Fleet();
 
         FileInput fileInput = new FileInput();
         try {
-            ConsoleOutput.display(true, "Load data from a file>>");
+            ConsoleOutput.display(true, "Stage of loading data from file...");
             List<String> stringsFromFile = fileInput.getStringsFromFile(filePath);
             List<Airliner> airliners = InputProcessing.getAirlinerData(stringsFromFile);
             List<Cargo> cargos =  InputProcessing.getCargoData(stringsFromFile);
@@ -46,24 +48,25 @@ public class Main {
 
             ConsoleOutput.display(true, "Sorting stage>>");
 
-//            Sort sort = new Sort();
+
             calc.compareHumanCapacity(airliners);
             fleet.printList();
-//
+
             calc.compareRange(fleet.getBoards());
             fleet.setBoards(fleet.getBoards());
             fleet.printList();
-//
-//            ConsoleOutput.display(true, "Search stage>>");
-//            //double minConsumption = ConsoleInput.getDouble();
-//            //double maxConsumption = ConsoleInput.getDouble();
-//            //Search search = new Search(minConsumption, maxConsumption);
-//            //fleet.setBoards(search.find(fleet));
+
+            ConsoleOutput.display(true, "Search stage>>");
+            ConsoleOutput.display(true, "Please enter minimum value of fuel consumption");
+            int minConsumption = ConsoleInput.getInteger();
+
+            ConsoleOutput.display(true, "Please enter maximum value of fuel consumption");
+            int maxConsumption = ConsoleInput.getInteger();
+            fleet.setBoards(calc.findBoardConsuption(fleet.getBoards(), minConsumption, maxConsumption));
+            fleet.printList();
         } catch (CustomException e) {
             e.printStackTrace();
         }
-
-
     }
 }
 

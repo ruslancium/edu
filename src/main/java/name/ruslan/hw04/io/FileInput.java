@@ -15,7 +15,11 @@ import java.util.List;
 public class FileInput {
 
     public List<String> getStringsFromFile(String filePath) throws CustomException {
-        File file = new File(filePath);
+        //resource loading is taken from http://howtodoinjava.com/core-java/io/read-file-from-resources-folder/
+        ClassLoader classLoader = new FileInput().getClass().getClassLoader();
+
+        //File file = new File(filePath);
+        File file = new File(classLoader.getResource(filePath).getFile());
         List<String> strings = new ArrayList<>();
         String line = null;
         BufferedReader reader = null;
