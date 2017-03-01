@@ -20,10 +20,10 @@ public final class InputProcessing {
         List<Board> boards = new ArrayList<>();
 
         for (String string : strings) {
-            String[] params = string.split("[ \\t]+");
+            String[] params = string.split("[ \\s]+");
             Board board = null;
 
-            //подключить строку Integer.parseInt(data[2]) в условие
+            //?????????? ?????? Integer.parseInt(data[2]) ? ???????
             int typeOfBoard = 0; //0 - airliner; 1 - cargo
 
             try {
@@ -53,21 +53,21 @@ public final class InputProcessing {
 
         Manufacturer manufacturer = null;
         String name = "";
-        int consumption = 0;  //потребление топлива
-        int speed = 0;        //скорость
-        double range = 0.0;   //дальность полета
-        int businessSeats = 0;//количество мест в бизнес-классе
-        int economSeats = 0;  //количество мест в эконом-классе
+        int consumption = 0;  //??????????? ???????
+        int speed = 0;        //????????
+        double range = 0.0;   //????????? ??????
+        int businessSeats = 0;//?????????? ???? ? ??????-??????
+        int economSeats = 0;  //?????????? ???? ? ??????-??????
 
         try {
             manufacturer = Manufacturer.getByCode(Integer.parseInt(data[0])); //manufacturer
             name = data[1]; //name of the board, IL-86, A-300, etc
 
-            consumption = Integer.parseInt(data[3]);  //потребление топлива
-            speed = Integer.parseInt(data[4]);        //скорость
-            range = Double.parseDouble(data[5]);   //дальность полета
-            businessSeats = Integer.parseInt(data[6]);//количество мест в бизнес-классе
-            economSeats = Integer.parseInt(data[7]);  //количество мест в эконом-классе
+            consumption = Integer.parseInt(data[3]);  //??????????? ???????
+            speed = Integer.parseInt(data[4]);        //????????
+            range = Double.parseDouble(data[5]);   //????????? ??????
+            businessSeats = Integer.parseInt(data[6]);//?????????? ???? ? ??????-??????
+            economSeats = Integer.parseInt(data[7]);  //?????????? ???? ? ??????-??????
         } catch (NumberFormatException e) {
             Main.LOGGER.log(Level.ERROR, "Wrong string is detected\n " + Arrays.toString(data));
             Main.LOGGER.log(Level.ERROR, e.getMessage());
@@ -90,18 +90,18 @@ public final class InputProcessing {
 
         Manufacturer manufacturer = null;
         String name = "";
-        int consumption = 0;  //потребление топлива
-        int speed = 0;        //скорость
-        double range = 0.0;   //дальность полета
+        int consumption = 0;  //??????????? ???????
+        int speed = 0;        //????????
+        double range = 0.0;   //????????? ??????
         int carriage = 0;
 
         try {
             manufacturer = Manufacturer.getByCode(Integer.parseInt(data[0])); //manufacturer
             name = data[1]; //name of the board, IL-86, A-300, etc
-            consumption = Integer.parseInt(data[3]);  //потребление топлива
-            speed = Integer.parseInt(data[4]);        //скорость
-            range = Double.parseDouble(data[5]);   //дальность полета
-            carriage = Integer.parseInt(data[6]);//количество мест в бизнес-классе
+            consumption = Integer.parseInt(data[3]);  //??????????? ???????
+            speed = Integer.parseInt(data[4]);        //????????
+            range = Double.parseDouble(data[5]);   //????????? ??????
+            carriage = Integer.parseInt(data[6]);//?????????? ???? ? ??????-??????
         } catch (NumberFormatException e) {
             Main.LOGGER.log(Level.ERROR, "Wrong string is detected\n " + Arrays.toString(data));
             Main.LOGGER.log(Level.ERROR, e.getMessage());

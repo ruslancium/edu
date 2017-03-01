@@ -48,6 +48,7 @@ public class Main {
                 else
                     cargos.add((Cargo)board);
             }
+
             String stringTotal = String.format("Total capacity: %d", calc.totalCapacity(airliners));
             ConsoleOutput.display(true, stringTotal);
 
