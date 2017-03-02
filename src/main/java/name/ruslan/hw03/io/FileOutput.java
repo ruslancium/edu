@@ -20,7 +20,7 @@ public class FileOutput {
             if (!file.exists()) file.createNewFile();
 
             for (Integer number : numbers) {
-                bw.write(number);
+                bw.write(String.valueOf(number));
                 bw.newLine();
             }
         } catch (IOException ex) {

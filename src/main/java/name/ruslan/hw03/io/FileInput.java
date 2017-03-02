@@ -12,14 +12,10 @@ import java.util.List;
 /**
  * Created by Ruslan_Arifullin on 2/27/2017.
  */
-public final class FileInput {
+public class FileInput {
 
-    public static List<String> getStringsFromFile(String filePath) throws CustomException {
-        //resource loading is taken from http://howtodoinjava.com/core-java/io/read-file-from-resources-folder/
-        ClassLoader classLoader = new FileInput().getClass().getClassLoader();
-
-        //File file = new File(filePath);
-        File file = new File(classLoader.getResource(filePath).getFile());
+    public List<String> getStringsFromFile(String filePath) throws CustomException {
+        File file = new File(filePath);
         List<String> strings = new ArrayList<>();
         String line = null;
         BufferedReader reader = null;
