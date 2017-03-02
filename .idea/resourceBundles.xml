@@ -3,11 +3,5 @@
   <component name="ResourceBundleManager">
     <file url="file://$PROJECT_DIR$/src/main/resources/properties/text.properties" />
     <file url="file://$PROJECT_DIR$/src/main/resources/properties/text_be_BY.properties" />
-    <custom-resource-bundle>
-      <file value="file://$PROJECT_DIR$/src/main/resources/properties/text.properties" />
-      <file value="file://$PROJECT_DIR$/src/main/resources/properties/text_be_BY.properties" />
-      <file value="file://$PROJECT_DIR$/src/main/resources/properties/text_us_EN.properties" />
-      <base-name>text</base-name>
-    </custom-resource-bundle>
   </component>
 </project>
