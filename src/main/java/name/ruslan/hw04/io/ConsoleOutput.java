@@ -1,6 +1,5 @@
 package name.ruslan.hw04.io;
 
-import name.ruslan.hw04.main.Main;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,7 +10,7 @@ import org.apache.logging.log4j.Logger;
  */
 public class ConsoleOutput {
 
-    public final static Logger LOGGER = LogManager.getLogger("Console Output");
+    public final static Logger LOGGER = LogManager.getLogger(ConsoleOutput.class.getSimpleName());
 
     public static void display(boolean flag, String text) {
         if (flag)

@@ -1,6 +1,5 @@
 package name.ruslan.hw04.io;
 
-import name.ruslan.hw04.main.Main;
 import name.ruslan.hw04.plane.Airliner;
 import name.ruslan.hw04.plane.Board;
 import name.ruslan.hw04.plane.Cargo;
@@ -10,7 +9,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -18,7 +16,7 @@ import java.util.List;
  */
 public final class InputProcessing {
 
-    public final static Logger LOGGER = LogManager.getLogger("Input_Processing");
+    public final static Logger LOGGER = LogManager.getLogger(InputProcessing.class.getSimpleName());
 
     public static List<Board> getBoards(List<String> strings) {
         List<Board> boards = new ArrayList<>();
@@ -27,26 +25,25 @@ public final class InputProcessing {
             String[] params = string.split("[\\s]+");
             Board board = null;
 
-            //?????????? ?????? Integer.parseInt(data[2]) ? ???????
-            int typeOfBoard = 0; //0 - airliner; 1 - cargo
-
             try {
-                typeOfBoard = Integer.parseInt(params[2]);
+                //?????????? ?????? Integer.parseInt(data[2]) ? ???????
+                int typeOfBoard = Integer.parseInt(params[2]); //0 - airliner; 1 - cargo
+
+                if (params.length == 8 && typeOfBoard == 0) { //airliner
+                    board = getAirliner(params);
+                } else if (params.length == 7 && typeOfBoard == 1) { //cargo
+                    board = getCargo(params);
+                } else
+                    LOGGER.log(Level.ERROR, "Wrong string is found:/n" + string);
+
+                if (board != null)
+                    boards.add(board);
             } catch (NumberFormatException e) {
                 LOGGER.log(Level.ERROR, "Wrong string is detected\n " + string);
                 LOGGER.log(Level.ERROR, e.getMessage());
                 continue;
             }
 
-            if (params.length == 8 && typeOfBoard == 0) { //airliner
-                board = getAirliner(params);
-            } else if (params.length == 7 && typeOfBoard == 1) { //cargo
-                board = getCargo(params);
-            } else
-                LOGGER.log(Level.INFO, "Wrong string is found:/n" + string);
-
-            if (board != null)
-                boards.add(board);
         }
 
         return boards;
@@ -55,28 +52,13 @@ public final class InputProcessing {
     private static Board getAirliner(String[] data) {
         Airliner board = new Airliner();
 
-        Manufacturer manufacturer = null;
-        String name = "";
-        int consumption = 0;  //??????????? ???????
-        int speed = 0;        //????????
-        double range = 0.0;   //????????? ??????
-        int businessSeats = 0;//?????????? ???? ? ??????-??????
-        int economSeats = 0;  //?????????? ???? ? ??????-??????
-
-        try {
-            manufacturer = Manufacturer.getByCode(Integer.parseInt(data[0])); //manufacturer
-            name = data[1]; //name of the board, IL-86, A-300, etc
-
-            consumption = Integer.parseInt(data[3]);  //??????????? ???????
-            speed = Integer.parseInt(data[4]);        //????????
-            range = Double.parseDouble(data[5]);   //????????? ??????
-            businessSeats = Integer.parseInt(data[6]);//?????????? ???? ? ??????-??????
-            economSeats = Integer.parseInt(data[7]);  //?????????? ???? ? ??????-??????
-        } catch (NumberFormatException e) {
-            LOGGER.log(Level.ERROR, "Wrong string is detected\n " + Arrays.toString(data));
-            LOGGER.log(Level.ERROR, e.getMessage());
-            return null;
-        }
+        Manufacturer manufacturer = Manufacturer.getByCode(Integer.parseInt(data[0])); //manufacturer
+        String name = data[1]; //name of the board, IL-86, A-300, etc;
+        int consumption = Integer.parseInt(data[3]);  //??????????? ???????
+        int speed = Integer.parseInt(data[4]);        //????????
+        double range = Double.parseDouble(data[5]);   //????????? ??????
+        int businessSeats = Integer.parseInt(data[6]);//?????????? ???? ? ??????-??????
+        int economSeats = Integer.parseInt(data[7]);  //?????????? ???? ? ??????-??????
 
         board.setManufacturer(manufacturer);
         board.setName(name);
@@ -92,25 +74,12 @@ public final class InputProcessing {
     private static Board getCargo(String[] data) {
         Cargo board = new Cargo();
 
-        Manufacturer manufacturer = null;
-        String name = "";
-        int consumption = 0;  //??????????? ???????
-        int speed = 0;        //????????
-        double range = 0.0;   //????????? ??????
-        int carriage = 0;
-
-        try {
-            manufacturer = Manufacturer.getByCode(Integer.parseInt(data[0])); //manufacturer
-            name = data[1]; //name of the board, IL-86, A-300, etc
-            consumption = Integer.parseInt(data[3]);  //??????????? ???????
-            speed = Integer.parseInt(data[4]);        //????????
-            range = Double.parseDouble(data[5]);   //????????? ??????
-            carriage = Integer.parseInt(data[6]);//?????????? ???? ? ??????-??????
-        } catch (NumberFormatException e) {
-            LOGGER.log(Level.ERROR, "Wrong string is detected\n " + Arrays.toString(data));
-            LOGGER.log(Level.ERROR, e.getMessage());
-            return null;
-        }
+        Manufacturer manufacturer = Manufacturer.getByCode(Integer.parseInt(data[0])); //manufacturer
+        String name = data[1]; //name of the board, IL-86, A-300, etc
+        int consumption = Integer.parseInt(data[3]);  //??????????? ???????
+        int speed = Integer.parseInt(data[4]);        //????????
+        double range = Double.parseDouble(data[5]);   //????????? ??????
+        int carriage = Integer.parseInt(data[6]);//?????????? ???? ? ??????-??????
 
         board.setManufacturer(manufacturer);
         board.setName(name);
