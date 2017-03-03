@@ -5,6 +5,7 @@ import name.ruslan.hw04.plane.Board;
 import name.ruslan.hw04.plane.Cargo;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,20 +21,26 @@ public class Calc {
 
     //сортировка бортов по вместимости
     public void compareHumanCapacity(List<Airliner> boards) {
+        boards.sort(Comparator.comparing(Airliner::getCapacity);
+/*
         boards.sort((board1, board2) -> {
             int cmp = Integer.compare(board1.getCapacity(), board2.getCapacity());
 
             return cmp;
         });
+*/
     }
 
     //сортировка бортов по дальности полета
     public void compareRange(List<? extends Board> boards) {
-        boards.sort((board1, board2) -> {
+        boards.sort(Comparator.comparing(Board::getRange)
+
+                /*{
             int cmp = Double.compare(board1.getRange(), board2.getRange());
 
             return cmp;
-        });
+        }*/
+                );
     }
 
 

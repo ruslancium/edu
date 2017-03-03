@@ -20,11 +20,12 @@ import java.util.List;
  * Created by Ruslan_Arifullin on 2/24/2017.
  */
 public class Main {
-    public final static Logger LOGGER = LogManager.getLogger(Main.class.getSimpleName());
+    public final static Logger LOGGER = LogManager.getLogger(Logger.class.getSimpleName());
 
     public static void main(String[] args) throws CustomException, name.ruslan.hw01.exception.CustomException {
 
-        String filePath = "data/planes.txt";
+        ConsoleOutput.display(true, "Please input filepath and filename");
+        String filePath = ConsoleInput.getString();
         Fleet fleet = new Fleet();
 
         FileInput fileInput = new FileInput();

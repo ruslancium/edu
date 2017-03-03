@@ -43,7 +43,7 @@ public abstract class Board {
         this.speed = speed;
     }
 
-    public double getRange() {
+    public Double getRange() {
         return range;
     }
 

@@ -6,9 +6,8 @@ import java.util.Scanner;
 
 /**
  * Created by Ruslan_Arifullin on 2/21/2017.
- * Класс для считывания символов из консоли
  */
-public class ConsoleInput {
+public final class ConsoleInput {
 
     public static int getInteger() throws CustomException {
         Scanner sc = new Scanner(System.in);
@@ -40,5 +39,11 @@ public class ConsoleInput {
         }
 
         return val;
+    }
+
+    public static String getString() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Please input a string... > ");
+        return sc.next();
     }
 }
