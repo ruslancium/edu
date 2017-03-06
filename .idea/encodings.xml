@@ -8,10 +8,10 @@
     <file url="file://$PROJECT_DIR$/src/main/java/name/ruslan/hw03/exception/CustomException.java" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/src/main/java/name/ruslan/hw03/io/ConsoleOutput.java" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/src/main/java/name/ruslan/hw03/io/InputProcessing.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/main/java/name/ruslan/hw04/calculation/Calc.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/java/name/ruslan/hw04/calculation/Calc.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/name/ruslan/hw04/exception/CustomException.java" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/src/main/java/name/ruslan/hw04/io/ConsoleOutput.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/main/java/name/ruslan/hw04/io/InputProcessing.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/java/name/ruslan/hw04/io/InputProcessing.java" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

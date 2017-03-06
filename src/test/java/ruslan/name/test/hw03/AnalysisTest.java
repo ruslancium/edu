@@ -1,40 +1,45 @@
 package ruslan.name.test.hw03;
 
 import name.ruslan.hw03.calc.Analysis;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertEquals;
+
 
 /**
  * Created by Ruslan_Arifullin on 3/3/2017.
  */
 public class AnalysisTest {
 
-    private  List<Integer> indata() {
-        List<Integer> input = new ArrayList<>();
-        input.add(0);
-        input.add(4);
-        input.add(6);
-        input.add(7);
-        input.add(0);
+    private List<Integer> indata;
+    private List<Integer> outdata;
 
-        return input;
+    @Before
+    public void initData() {
+        indata = new ArrayList<Integer>(){
+            void addElem() {
+                add(0);
+                add(4);
+                add(6);
+                add(7);
+                add(0);
+            }
+        };
+
+        outdata = new ArrayList<Integer>() {
+            void addElem() {
+                add(0);
+                add(4);
+            }
+        };
     }
-
-    private  List<Integer> outdata() {
-        List<Integer> output = new ArrayList<>();
-        output.add(0);
-        output.add(4);
-
-        return output;
-    }
-
 
     @Test
     public void test() {
-        assertEquals(outdata(), Analysis.getPositionsOfZeros(indata()));
+        assertEquals(outdata, Analysis.getPositionsOfZeros(indata));
     }
 }

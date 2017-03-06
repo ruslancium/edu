@@ -14,14 +14,14 @@ import java.util.stream.Collectors;
  */
 public class Calc {
 
-    //поиск судна по потреблению топлива
+    //
     public List<? extends Board> findBoardConsuption(List<? extends Board> boards, int minConsumption, int maxConsumption) {
         return boards.stream().filter(board -> board.getConsumption() >= minConsumption && board.getConsumption() <= maxConsumption).collect(Collectors.toCollection(ArrayList::new));
     }
 
-    //сортировка бортов по вместимости
+    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     public void compareHumanCapacity(List<Airliner> boards) {
-        boards.sort(Comparator.comparing(Airliner::getCapacity);
+        boards.sort(Comparator.comparing(Airliner::getCapacity));
 /*
         boards.sort((board1, board2) -> {
             int cmp = Integer.compare(board1.getCapacity(), board2.getCapacity());
@@ -31,7 +31,7 @@ public class Calc {
 */
     }
 
-    //сортировка бортов по дальности полета
+    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     public void compareRange(List<? extends Board> boards) {
         boards.sort(Comparator.comparing(Board::getRange)
 
@@ -43,8 +43,6 @@ public class Calc {
                 );
     }
 
-
-    //подсчет общей вместимости
     public int totalCapacity(List<Airliner> boards) {
         int total = 0;
 
@@ -55,7 +53,6 @@ public class Calc {
         return total;
     }
 
-    //подсчет общей грузоподъемности
     public int totalCarriage(List<Cargo> boards) {
         int total = 0;
 

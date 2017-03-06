@@ -16,7 +16,7 @@ import java.util.List;
  */
 public final class InputProcessing {
 
-    public final static Logger LOGGER = LogManager.getLogger(InputProcessing.class.getSimpleName());
+    public final static Logger LOGGER = LogManager.getLogger("InputProcessing.class");
 
     public static List<Board> getBoards(List<String> strings) {
         List<Board> boards = new ArrayList<>();
@@ -26,7 +26,6 @@ public final class InputProcessing {
             Board board = null;
 
             try {
-                //?????????? ?????? Integer.parseInt(data[2]) ? ???????
                 int typeOfBoard = Integer.parseInt(params[2]); //0 - airliner; 1 - cargo
 
                 if (params.length == 8 && typeOfBoard == 0) { //airliner
@@ -39,8 +38,7 @@ public final class InputProcessing {
                 if (board != null)
                     boards.add(board);
             } catch (NumberFormatException e) {
-                LOGGER.log(Level.ERROR, "Wrong string is detected\n " + string);
-                LOGGER.log(Level.ERROR, e.getMessage());
+                LOGGER.log(Level.ERROR, "Wrong string is detected\n " + string + ":" + e.getMessage());
                 continue;
             }
 
@@ -76,10 +74,10 @@ public final class InputProcessing {
 
         Manufacturer manufacturer = Manufacturer.getByCode(Integer.parseInt(data[0])); //manufacturer
         String name = data[1]; //name of the board, IL-86, A-300, etc
-        int consumption = Integer.parseInt(data[3]);  //??????????? ???????
-        int speed = Integer.parseInt(data[4]);        //????????
-        double range = Double.parseDouble(data[5]);   //????????? ??????
-        int carriage = Integer.parseInt(data[6]);//?????????? ???? ? ??????-??????
+        int consumption = Integer.parseInt(data[3]);
+        int speed = Integer.parseInt(data[4]);
+        double range = Double.parseDouble(data[5]);
+        int carriage = Integer.parseInt(data[6]);
 
         board.setManufacturer(manufacturer);
         board.setName(name);

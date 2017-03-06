@@ -1,3 +1,3 @@
-2017-03-01 17:37:18 [main] ERROR Input_Processing - Wrong string is detected
- [3, "ffads", 0, s, d, e, w, 4]
-2017-03-01 17:37:19 [main] ERROR Input_Processing - For input string: "s"
+2017-03-03 17:23:56 [main] ERROR InputProcessing - Wrong string is detected
+ 3 "ffads" 0 s  d  e  w   4
+2017-03-03 17:23:56 [main] ERROR InputProcessing - For input string: "s"
