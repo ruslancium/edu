@@ -39,7 +39,7 @@ public class AnalysisTest {
     }
 
     @Test
-    public void test() {
+    public void getPositionsOfZerostTest() {
         assertEquals(outdata, Analysis.getPositionsOfZeros(indata));
     }
 }
