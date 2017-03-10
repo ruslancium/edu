@@ -6,7 +6,7 @@ import org.apache.logging.log4j.Logger;
 
 /**
  * Created by Ruslan_Arifullin on 2/21/2017.
- * ����� ��� ������ �������� �� �������
+ *
  */
 public class ConsoleOutput {
 
