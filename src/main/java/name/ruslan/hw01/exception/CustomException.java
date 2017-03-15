@@ -2,7 +2,7 @@ package name.ruslan.hw01.exception;
 
 /**
  * Created by Ruslan_Arifullin on 2/21/2017.
- * Исключения
+ * ??????????
  */
 public class CustomException extends Exception {
     private static final long serialVersionUID = 1L;

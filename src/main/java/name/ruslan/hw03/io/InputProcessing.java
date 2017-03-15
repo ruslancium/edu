@@ -23,8 +23,7 @@ public final class InputProcessing {
             try {
                 number = Integer.parseInt(string); //0 - airliner; 1 - cargo
             } catch (NumberFormatException e) {
-                LOGGER.log(Level.ERROR, "Wrong number is detected\n " + string);
-                LOGGER.log(Level.ERROR, e.getMessage());
+                LOGGER.log(Level.ERROR, "Wrong number is detected:  " + string + " stack trace: " + e.getMessage());
                 return null;
             }
 
