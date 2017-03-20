@@ -10,8 +10,8 @@ import name.ruslan.hw04.plane.Airliner;
 import name.ruslan.hw04.plane.Board;
 import name.ruslan.hw04.plane.Cargo;
 import name.ruslan.hw04.plane.Fleet;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
