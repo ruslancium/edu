@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<flowers>
+    <flower name="Romashka">
+        <soil>подзолистая</soil>
+        <origin>Колыма</origin>
+        <visual_parameters>
+            <stebel>green</stebel>
+            <leaves>black</leaves>
+            <length>20</length>
+        </visual_parameters>
+    </flower>
+</flowers>
