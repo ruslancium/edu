@@ -1,13 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.example.com/flowers"
+        xmlns:tns="http://www.example.com/flowers"
+        elementFormDefault="qualified">
 
-<flowers>
-    <flower name="Romashka">
-        <soil>подзолистая</soil>
-        <origin>Колыма</origin>
-        <visual_parameters>
-            <stebel>green</stebel>
-            <leaves>black</leaves>
-            <length>20</length>
-        </visual_parameters>
-    </flower>
-</flowers>
+    <simpleType name="Name">
+        <restriction base="string">
+        </restriction>
+    </simpleType>
+
+    <simpleType name="Soil">
+        <restriction base="string">
+            <enumeration value="подзолистая"></enumeration>
+            <enumeration value="грунтовая"></enumeration>
+            <enumeration value="дерново-подзолистая"></enumeration>
+        </restriction>
+    </simpleType>
+
+    <simpleType name="Name">
+        <restriction base="string">
+        </restriction>
+    </simpleType>
+
+    <complexType>
+            <sequence>
+                <element name="flowers" type="tns:flowers" minOccurs="2"
+                         maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+
+    <complexType name="flowers">
+        <sequence>
+            <element name="name" type="string"/>
+            <element name="telephone" type="positiveInteger"/>
+            <element name="address" type="tns:Address"/>
+        </sequence>
+        <attribute name="login" type="tns:Login" use="required"/>
+        <attribute name="faculty" use="optional" default="mmf">
+            <simpleType>
+                <restriction base="string">
+                    <enumeration value="mmf"></enumeration>
+                    <enumeration value="famcs"></enumeration>
+                    <enumeration value="csan"></enumeration>
+                </restriction>
+            </simpleType>
+        </attribute>
+    </complexType>
+    <simpleType name="Login">
+        <restriction base="ID">
+            <pattern value="([a-zA-Z])[a-zA-Z0-9]{7,19}"/>
+        </restriction>
+    </simpleType>
+    <complexType name="Address">
+        <sequence>
+            <element name="country" type="string"/>
+            <element name="city" type="string"/>
+            <element name="street" type="string"/>
+        </sequence>
+    </complexType>
+</schema>

@@ -1,4 +1,2 @@
-2017-03-03 17:23:56 [main] ERROR InputProcessing - Wrong string is detected
- 3 "ffads" 0 s  d  e  w   4
-2017-03-03 17:23:56 [main] ERROR InputProcessing - For input string: "s"
-ERROR - 2 : 11 - cvc-elt.1: Cannot find the declaration of element 'students'.
+ERROR - 4 : 77 - cvc-elt.1: Cannot find the declaration of element 'students'.
+ERROR - 4 : 77 - cvc-elt.1: Cannot find the declaration of element 'students'.
