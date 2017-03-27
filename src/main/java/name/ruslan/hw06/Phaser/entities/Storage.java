@@ -6,19 +6,19 @@ import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class Storage implements Iterable<Container> {
+
     public static final int DEFAULT_STORAGE_CAPACITY = 20;
     private Queue<Container> goods = null;
-    public static final int DEFAULT_SHIP_CAPACITY = 3;
-    private Queue<Ship> ships = null;
+    private int freeSpace;
 
-    private Storage() {
+    public Storage() {
         goods = new LinkedBlockingQueue<Container>(DEFAULT_STORAGE_CAPACITY);
-        ships = new LinkedBlockingQueue<Ship>(DEFAULT_SHIP_CAPACITY);
+        freeSpace = DEFAULT_STORAGE_CAPACITY;
     }
 
     private Storage(int capacity) {
         goods = new LinkedBlockingQueue<Container>(capacity);
-        ships = new LinkedBlockingQueue<Ship>(DEFAULT_SHIP_CAPACITY);
+        freeSpace = capacity;
     }
 
     public static Storage createStorage(int capacity) {
@@ -37,7 +37,12 @@ public class Storage implements Iterable<Container> {
     }
 
     public boolean setGood(Container good) {
+        freeSpace--;
         return goods.add(good);
+    }
+
+    public int getFreeSpace() {
+        return freeSpace;
     }
 
     @Override

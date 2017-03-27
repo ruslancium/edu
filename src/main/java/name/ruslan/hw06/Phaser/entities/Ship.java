@@ -12,6 +12,8 @@ public class Ship implements Runnable {
     private String name;
     private int capacity;
     private int numContainers;
+    private int[] containers;
+    private Storage storage = new Storage();
 
     public Ship(String name, int capacity, int numContainers) {
         this.name = name;
@@ -19,10 +21,10 @@ public class Ship implements Runnable {
         this.numContainers = numContainers;
     }
 
-    public Ship(String name, int numContainers) {
+    public Ship(String name, int capacity) {
         this.name = name;
-        this.capacity = DEFAULT_SHIP_CAPACITY;
-        this.numContainers = numContainers;
+        this.capacity = capacity;
+        this.numContainers = DEFAULT_NUMBER_OF_CONTAINERS;
     }
 
     public Ship(String name) {
@@ -33,15 +35,34 @@ public class Ship implements Runnable {
 
     public void run() {
         //phaser.arriveAndAwaitAdvance();
-        unloadTruck();
+        unloadShip();
+
         //phaser.arriveAndAwaitAdvance();
-        loadTruck();
+        //loadTruck();
         //phaser.arriveAndAwaitAdvance();
         //departPort();
         //phaser.arriveAndDeregister();
     }
 
+    private void unloadShip() {
+        if (numContainers > storage.getFreeSpace()) {
+            System.out.println("A place for storage is not enough. Please, come into port later");
+            return;
+        }
+
+        for (int i = 0; i < numContainers; i++) {
+            System.out.println("Корабль " + name + " разгрузил товар № ");
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
     private void loadTruck() {
+/*
         for (int i = 0; i < capacity; i++) {
             Container g = storage.getGood();
             if (g == null) { // если в хранилище больше нет товара, 
@@ -57,39 +78,30 @@ public class Ship implements Runnable {
                 e.printStackTrace();
             }
         }
+*/
     }
 
-    private void unloadTruck() {
-        int size = bodyStorage.size();
-        for (int i = 0; i < size; i++) {
-            Container g = bodyStorage.poll();
-            storage.setGood(g);
-            System.out.println("Корабль " + number + " разгрузил товар №"
-                    + g.getRegistrationNumber());
-            try {
-                Thread.sleep(50);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 
     private void arriveAtPort() {
+/*
         try {
             Thread.sleep(new Random(100).nextInt(500));
             System.out.println("Грузовик " + number + " зашел в порт.");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+*/
     }
 
     private void departPort() {
+/*
         try {
             Thread.sleep(new Random(100).nextInt(500));
             System.out.println("Корабль " + number + " покинул порт.");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+*/
     }
 
 }

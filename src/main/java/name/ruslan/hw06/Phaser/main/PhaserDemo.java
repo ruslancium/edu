@@ -28,16 +28,17 @@ public class PhaserDemo {
         Thread[] threads = new Thread[20];
 
         for (int i = 0; i < 20; i++) {
-            threads[i] = new Thread(new Ship"tr" + i));
+            threads[i] = new Thread(new Ship("sh" + i, (int)Math.random() * 10));
         }
-        printGoodsToConsole("Товары на складе ", storage);
-        // запуск колонны грузовиков на прибытие, разгрузку, загрузку и отплытие
 
+        printGoodsToConsole("Товары на складе ", storage);
+
+        // запуск колонны грузовиков на прибытие, разгрузку, загрузку и отплытие
         for (int i = 0; i < 20; i++) {
             threads[i].start();
         }
 
-        // синхронизация прибытия
+/*        // синхронизация прибытия
         currentPhase = phaser.getPhase();
         phaser.arriveAndAwaitAdvance();
         System.out.println("Прибытие корбалей в порт. Фаза " + currentPhase
@@ -64,9 +65,9 @@ public class PhaserDemo {
         phaser.arriveAndDeregister();
         if (phaser.isTerminated()) {
             System.out.println("Фазы синхронизированы и завершены.");
-        }
-        printGoodsToConsole("Товары на складе ", storage);
+        }*/
 
+        printGoodsToConsole("Товары на складе ", storage);
     }
 
     public static void printGoodsToConsole(String title, Storage storage) {
