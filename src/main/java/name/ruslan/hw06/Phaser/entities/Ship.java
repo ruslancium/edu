@@ -6,43 +6,39 @@ import java.util.Random;
 import java.util.concurrent.Phaser;
 
 public class Ship implements Runnable {
-    private final int DEFAULT_SHIP_STORAGE_CAPACITY = 10;
-    private Phaser phaser;
-    private String number;
+    private final int DEFAULT_SHIP_CAPACITY = 10;
+    private final int DEFAULT_NUMBER_OF_CONTAINERS = 0;
+
+    private String name;
     private int capacity;
-    private Storage storage;
-    private Queue<Container> bodyStorage;
+    private int numContainers;
 
-    public Ship(Phaser phaser, String name, int capacity, Storage storage
-    ) {
-        this.phaser = phaser;
-        this.number = name;
+    public Ship(String name, int capacity, int numContainers) {
+        this.name = name;
         this.capacity = capacity;
-        this.bodyStorage = new ArrayDeque<Container>(capacity);
-        this.storage = storage;
-        this.phaser.register();
+        this.numContainers = numContainers;
     }
 
-    public Ship(Phaser phaser, String name, Storage storage
-    ) {
-        this.phaser = phaser;
-        this.number = name;
-        this.capacity = DEFAULT_SHIP_STORAGE_CAPACITY;
-        this.bodyStorage = new ArrayDeque<Container>(capacity);
-        this.storage = storage;
-        this.phaser.register();
+    public Ship(String name, int numContainers) {
+        this.name = name;
+        this.capacity = DEFAULT_SHIP_CAPACITY;
+        this.numContainers = numContainers;
     }
 
+    public Ship(String name) {
+        this.name = name;
+        this.capacity = DEFAULT_SHIP_CAPACITY;
+        this.numContainers = DEFAULT_NUMBER_OF_CONTAINERS;
+    }
 
     public void run() {
-        arriveAtPort();
-        phaser.arriveAndAwaitAdvance();
+        //phaser.arriveAndAwaitAdvance();
         unloadTruck();
-        phaser.arriveAndAwaitAdvance();
+        //phaser.arriveAndAwaitAdvance();
         loadTruck();
-        phaser.arriveAndAwaitAdvance();
-        departPort();
-        phaser.arriveAndDeregister();
+        //phaser.arriveAndAwaitAdvance();
+        //departPort();
+        //phaser.arriveAndDeregister();
     }
 
     private void loadTruck() {

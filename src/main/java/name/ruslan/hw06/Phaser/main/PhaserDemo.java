@@ -25,16 +25,17 @@ public class PhaserDemo {
         phaser.register();
         int currentPhase;
         // создание колонны грузовиков
-        Thread tr1 = new Thread(new Ship(phaser, "tr1", 5, storage));
-        Thread tr2 = new Thread(new Ship(phaser, "tr2", 6, storage));
-        Thread tr3 = new Thread(new Ship(phaser, "tr3", 7, storage));
-        Thread tr4 = new Thread(new Ship(phaser, "tr4", storage));
+        Thread[] threads = new Thread[20];
+
+        for (int i = 0; i < 20; i++) {
+            threads[i] = new Thread(new Ship"tr" + i));
+        }
         printGoodsToConsole("“овары на складе ", storage);
         // запуск колонны грузовиков на прибытие, разгрузку, загрузку и отплытие
-        tr1.start();
-        tr2.start();
-        tr3.start();
-        tr4.start();
+
+        for (int i = 0; i < 20; i++) {
+            threads[i].start();
+        }
 
         // синхронизаци€ прибыти€
         currentPhase = phaser.getPhase();

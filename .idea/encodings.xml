@@ -15,8 +15,6 @@
     <file url="file://$PROJECT_DIR$/src/main/java/name/ruslan/hw04/exception/CustomException.java" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/src/main/java/name/ruslan/hw04/io/ConsoleOutput.java" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/src/main/java/name/ruslan/hw04/io/InputProcessing.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/name/ruslan/hw06/Phaser/PhaserDemo.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/main/java/name/ruslan/hw06/Phaser/Ship.java" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/src/main/java/name/ruslan/hw06/Phaser/entities/Ship.java" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/src/main/java/name/ruslan/hw06/Phaser/io/ConsoleOutput.java" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/src/main/java/name/ruslan/hw06/Phaser/main/PhaserDemo.java" charset="windows-1251" />
